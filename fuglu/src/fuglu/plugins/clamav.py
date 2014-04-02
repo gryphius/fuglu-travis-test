@@ -46,7 +46,7 @@ Tags:
             },
             
             'port':{
-                'default':'3310',
+                'default':'/var/run/clamav/clamd.ctl',
                 'description':"tcp port number or path to clamd.sock for unix domain sockets\nexample /var/lib/clamav/clamd.sock or on ubuntu: /var/run/clamav/clamd.ctl ",
             },
                          
