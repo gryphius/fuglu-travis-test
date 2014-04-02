@@ -3,7 +3,7 @@ python:
   - "2.6"
   - "2.7"
 # command to install dependencies
-install: "pip install -r BeautifulSoup python-magic"
+install: "pip install BeautifulSoup python-magic"
 # command to run tests
 script: fuglu/test/runtests.py
 
