@@ -19,3 +19,6 @@ script: python fuglu/test/runtests.py
 branches:
   only:
     - master
+
+notifications:
+  email: false
