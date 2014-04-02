@@ -835,7 +835,7 @@ class AllpluginTestCase(unittest.TestCase):
         config=ConfigParser.RawConfigParser()
         config.read(['../conf/fuglu.conf.dist'])
         config.set('main', 'disablebounces', '1')
-        
+        guess_clamav_socket(config)
         self.mc=MainController(config)
         self.tempfiles=[]
  
