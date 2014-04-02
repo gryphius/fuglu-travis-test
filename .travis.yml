@@ -4,10 +4,11 @@ python:
   - "2.7"
   
 before_install:
-  - sudo apt-get update
+  - sudo apt-get update -qq
   - sudo apt-get install clamav-daemon 
+  - sudo freshclam
+  - sudo service clamav-daemon restart
 
-  
 # command to install dependencies
 install:
   - pip install -r test-requirements.txt
