@@ -11,3 +11,6 @@ script: fuglu/test/runtests.py fuglu.shared
 branches:
   only:
     - master
+
+virtualenv:
+  system_site_packages: true
