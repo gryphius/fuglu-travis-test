@@ -6,12 +6,9 @@ python:
 install:
   - pip install -r test-requirements.txt
 # command to run tests
-#script: fuglu/test/runtests.py fuglu.shared fuglu.plugins.vacation
-script: python testscript.py
+script: python fuglu/test/runtests.py fuglu.shared fuglu.plugins.vacation
+
 
 branches:
   only:
     - master
-
-virtualenv:
-  system_site_packages: true
