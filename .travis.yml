@@ -7,7 +7,7 @@ install:
   - pip install -r test-requirements.txt
 # command to run tests
 #script: fuglu/test/runtests.py fuglu.shared fuglu.plugins.vacation
-script: ./testscript.py
+script: python testscript.py
 
 branches:
   only:
