@@ -814,7 +814,20 @@ class MainController(object):
 
 ############################## UNIT TESTS ##########################################
 
-
+def guess_clamav_socket(config):
+    """depending on the test environment, clamav may be using a tcp port or running on a unix socket
+    try to guess the correct setting 
+    """
+    config.set('ClamavPlugin', 'port','3310')
+    #try local socket:
+    knownpaths=[
+      '/var/lib/clamav/clamd.sock',
+      '/var/run/clamav/clamd.ctl',
+    ]
+    for p in knownpaths:
+        if os.path.exists(p):
+            config.set('ClamavPlugin', 'port',p)
+            break
 
 class AllpluginTestCase(unittest.TestCase):
     """Tests that all plugins should pass"""
@@ -883,6 +896,7 @@ class EndtoEndTestTestCase(unittest.TestCase):
         self.config.set('main','incomingport',str(EndtoEndTestTestCase.FUGLU_PORT))
         self.config.set('main','outgoingport',str(EndtoEndTestTestCase.DUMMY_PORT))
         self.config.set('main','controlport',str(EndtoEndTestTestCase.FUGLUCONTROL_PORT))
+        guess_clamav_socket(self.config)
         #init core
         self.mc=MainController(self.config)
         
@@ -948,6 +962,8 @@ class DKIMTestCase(unittest.TestCase):
         self.config.set('main','incomingport',str(DKIMTestCase.FUGLU_PORT))
         self.config.set('main','outgoingport',str(DKIMTestCase.DUMMY_PORT))
         self.config.set('main','controlport',str(DKIMTestCase.FUGLUCONTROL_PORT))
+        guess_clamav_socket(self.config)
+        
         #init core
         self.mc=MainController(self.config)
         
@@ -1012,6 +1028,8 @@ class SMIMETestCase(unittest.TestCase):
         self.config.set('main','incomingport',str(SMIMETestCase.FUGLU_PORT))
         self.config.set('main','outgoingport',str(SMIMETestCase.DUMMY_PORT))
         self.config.set('main','controlport',str(SMIMETestCase.FUGLUCONTROL_PORT))
+        guess_clamav_socket(self.config)
+        
         #init core
         self.mc=MainController(self.config)
         
