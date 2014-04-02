@@ -46,7 +46,7 @@ Tags:
             },
             
             'port':{
-                'default':'/var/run/clamav/clamd.ctl',
+                'default':'3310',
                 'description':"tcp port number or path to clamd.sock for unix domain sockets\nexample /var/lib/clamav/clamd.sock or on ubuntu: /var/run/clamav/clamd.ctl ",
             },
                          
@@ -275,7 +275,7 @@ class ClamavPluginTestCase(unittest.TestCase):
         config.set('virus','defaultvirusaction','DELETE')
         config.add_section('ClamavPlugin')
         config.set('ClamavPlugin', 'host','127.0.0.1')
-        config.set('ClamavPlugin', 'port','3310')
+        config.set('ClamavPlugin', 'port','/var/run/clamav/clamd.ctl')
         config.set('ClamavPlugin', 'timeout','5')
         config.set('ClamavPlugin', 'retries','3')
         config.set('ClamavPlugin', 'maxsize','22000000')
