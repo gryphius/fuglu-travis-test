@@ -13,7 +13,7 @@ before_install:
 install:
   - pip install -r test-requirements.txt
 # command to run tests
-script: python fuglu/test/runtests.py
+script: python fuglu/test/runtests.py fuglu.plugins.clamav
 
 
 branches:
